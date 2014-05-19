@@ -36,7 +36,6 @@ android {
 
 dependencies {
     compile "com.android.support:support-v4:19.0.+"
-    compile files('libs/wearable-preview-support.jar')
     compile project(':AndroidBleLib')
     compile project(':ReusableAndroidUtils')
     compile project(':Witness')
