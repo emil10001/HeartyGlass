@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Hearty.io</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+	<string name="reply">reply</string>
+	<string name="heart_rate">Heart Rate</string>
+	<string name="glass_voice_command">Show my heart rate</string>
+
+</resources>
