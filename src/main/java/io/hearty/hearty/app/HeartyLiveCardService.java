@@ -1,4 +1,4 @@
-package com.feigdev.hearty.app;
+package io.hearty.hearty.app;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -8,11 +8,11 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
-import com.feigdev.ble.lib.data.HeartRate;
-import com.feigdev.ble.lib.heart.BleHeartService;
-import com.feigdev.ble.lib.utils.BlePrefs;
-import com.feigdev.witness.Reporter;
-import com.feigdev.witness.Witness;
+import io.hearty.ble.lib.data.HeartRate;
+import io.hearty.ble.lib.heart.BleHeartService;
+import io.hearty.ble.lib.utils.BlePrefs;
+import io.hearty.witness.Reporter;
+import io.hearty.witness.Witness;
 import com.google.android.glass.timeline.LiveCard;
 
 /**
@@ -24,7 +24,7 @@ public class HeartyLiveCardService extends Service implements Reporter {
     private LiveCard mLiveCard;
     private RemoteViews mLiveCardView;
 
-    private final Handler mHandler = new Handler();
+    private final Handler handler = new Handler();
     private HeartyManager killReceiver;
 
     @Override
@@ -106,16 +106,18 @@ public class HeartyLiveCardService extends Service implements Reporter {
 
     @Override
     public void notifyEvent(final Object o) {
-        if (o instanceof HeartRate) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+                if (o instanceof HeartRate) {
                     HeartRate heartRate = ((HeartRate) o);
                     Log.d(TAG, "heart rate " + heartRate.getHeartRate());
                     notifyHeartRate(heartRate);
                 }
-            });
-        }
+
+            }
+        });
     }
 
     private void notifyHeartRate(HeartRate heartRate) {

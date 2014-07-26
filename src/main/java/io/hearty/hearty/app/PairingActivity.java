@@ -1,4 +1,4 @@
-package com.feigdev.hearty.app;
+package io.hearty.hearty.app;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
@@ -8,14 +8,14 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import com.feigdev.ble.lib.BleScanner;
-import com.feigdev.ble.lib.data.BleConnect;
-import com.feigdev.ble.lib.data.DeviceFound;
-import com.feigdev.ble.lib.data.StoredBluetoothDevice;
-import com.feigdev.ble.lib.heart.BleHeartService;
-import com.feigdev.ble.lib.utils.BlePrefs;
-import com.feigdev.witness.Reporter;
-import com.feigdev.witness.Witness;
+import io.hearty.ble.lib.BleScanner;
+import io.hearty.ble.lib.data.BleConnect;
+import io.hearty.ble.lib.data.DeviceFound;
+import io.hearty.ble.lib.data.StoredBluetoothDevice;
+import io.hearty.ble.lib.heart.BleHeartService;
+import io.hearty.ble.lib.utils.BlePrefs;
+import io.hearty.witness.Reporter;
+import io.hearty.witness.Witness;
 import com.google.android.glass.app.Card;
 import com.google.android.glass.widget.CardScrollView;
 
@@ -33,7 +33,8 @@ public class PairingActivity extends Activity implements Reporter {
     private List<Card> mCards;
     private CardScrollView mCardScrollView;
     private PairingScrollAdapter mCardScrollAdapter;
-private BlePrefs prefs;
+    private BlePrefs prefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,7 @@ private BlePrefs prefs;
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         Witness.remove(DeviceFound.class, this);
         super.onDestroy();
     }
@@ -97,21 +98,18 @@ private BlePrefs prefs;
         mCardScrollAdapter.notifyDataSetChanged();
     }
 
-
     @Override
     public void notifyEvent(final Object o) {
-        if (null == o)
-            return;
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
 
-        if (o instanceof DeviceFound) {
-            Log.d(TAG, "DeviceFound");
-
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
+                if (o instanceof DeviceFound) {
+                    Log.d(TAG, "DeviceFound");
                     cardGen(((DeviceFound) o).device);
                 }
-            });
-        }
+
+            }
+        });
     }
 }

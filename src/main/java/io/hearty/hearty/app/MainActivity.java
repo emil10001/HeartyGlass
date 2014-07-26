@@ -1,4 +1,4 @@
-package com.feigdev.hearty.app;
+package io.hearty.hearty.app;
 
 import android.app.Activity;
 import android.os.Bundle;

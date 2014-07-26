@@ -1,4 +1,4 @@
-package com.feigdev.hearty.app;
+package io.hearty.hearty.app;
 
 /**
  * Created by ejf3 on 5/16/14.
