@@ -14,16 +14,10 @@ import java.util.List;
  */
 public class PairingScrollAdapter extends CardScrollAdapter {
     private List<Card> mCards;
-    private CardScrollView mCardScrollView;
-
-    private final Context context;
 
     public PairingScrollAdapter(List<Card> mCards, CardScrollView mCardScrollView, Context context) {
         this.mCards = mCards;
-        this.mCardScrollView = mCardScrollView;
-        this.context = context;
     }
-
 
     @Override
     public int getPosition(Object item) {

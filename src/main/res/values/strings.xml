@@ -7,5 +7,7 @@
 	<string name="reply">reply</string>
 	<string name="heart_rate">Heart Rate</string>
 	<string name="glass_voice_command">Show my heart rate</string>
+    <string name="pair_instructions">Swipe to see available HRMs</string>
+    <string name="pair_instructions_device">Tap to pair</string>
 
 </resources>
