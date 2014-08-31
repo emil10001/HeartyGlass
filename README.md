@@ -1,6 +1,6 @@
 # HeartyGlass
 
-![icon](master/raw_assets/icon/color_icon.png)
+![icon](https://raw.githubusercontent.com/emil10001/HeartyGlass/master/raw_assets/icon/color_icon.png)
 
 This is the Glassware for the [Hearty.io](https://github.com/emil10001/Hearty.io) service.
 It currently has support for heart rate monitoring via a BLE HRM (Bluetooth 4.0 Low Energy
