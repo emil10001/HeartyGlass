@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:orientation="vertical"
-			  android:layout_width="match_parent"
-			  android:layout_height="match_parent"
-			  android:gravity="center">
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
 
-	<TextView
-			android:text="@string/heart_rate"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentRight="true"
-			android:gravity="center"
-			android:textSize="20sp"/>
 
-	<TextView
-			android:id="@+id/heart_rate"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentLeft="true"
-			android:gravity="center"
-			android:textSize="120sp"/>
+    <ImageView
+        android:layout_width="240px"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/big_icon" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/heart_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:textSize="120sp"
+            android:paddingBottom="20dp" />
+
+        <TextView
+            android:text="@string/heart_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:paddingTop="20dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

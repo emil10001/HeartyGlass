@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -34,6 +35,7 @@ public class PairingActivity extends Activity implements Reporter {
 
     private List<Card> mCards;
     private PairingScrollAdapter mCardScrollAdapter;
+    private SparseArray<BluetoothDevice> deviceArray = new SparseArray<BluetoothDevice>();
     private BlePrefs prefs;
 
     @Override
@@ -67,7 +69,7 @@ public class PairingActivity extends Activity implements Reporter {
                 if (0 == position)
                     return;
 
-                String address = ((Card) mCardScrollAdapter.getItem(position)).getFootnote().toString();
+                String address = deviceArray.get(position).getAddress();
                 StoredBluetoothDevice device = BleScanner.getDevices().get(address);
                 Witness.notify(new BleConnect(device.getDevice()));
                 prefs.setConnectedDevice(device.getDevice());
@@ -101,12 +103,13 @@ public class PairingActivity extends Activity implements Reporter {
 
         Log.d(TAG, "cardGen " + device.getAddress());
         Card c = new Card(this);
-        c.setImageLayout(Card.ImageLayout.LEFT).addImage(R.drawable.ic_launcher);
+        c.setImageLayout(Card.ImageLayout.LEFT).addImage(R.drawable.big_icon);
         String text = (null == device.getName()) ? device.getAddress() : device.getName();
         c.setText(text);
         c.setFootnote(R.string.pair_instructions_device);
 
         mCards.add(c);
+        deviceArray.append((mCards.size() - 1), device);
         mCardScrollAdapter.notifyDataSetChanged();
     }
 
